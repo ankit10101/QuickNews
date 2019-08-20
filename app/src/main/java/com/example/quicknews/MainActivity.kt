@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#FF9800")
                 darkColor = Color.parseColor("#F57C00")
                 fragment = NewsFragment.newInstance("general", color)
-                title = "IndianNews"
+                title = "Quick News"
             }
 
             R.id.nav_business -> {

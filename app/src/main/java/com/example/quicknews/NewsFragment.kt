@@ -57,6 +57,8 @@ class NewsFragment : Fragment() {
                 val newsResponse = gson.fromJson(result, NewsResponse::class.java)
                 questionsList.addAll(newsResponse.articles)
                 activity?.runOnUiThread {
+                    rvNews.visibility = View.VISIBLE
+                    pbLoading.visibility = View.GONE
                     newsAdapter.notifyDataSetChanged()
                 }
             }
@@ -65,6 +67,7 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvNews.visibility = View.GONE
         newsAdapter = NewsAdapter(questionsList, arguments!!.getInt("COLOR"))
         rvNews.layoutManager = LinearLayoutManager(requireContext())
         rvNews.adapter = newsAdapter
