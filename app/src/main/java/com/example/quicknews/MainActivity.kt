@@ -7,6 +7,8 @@ import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -44,7 +46,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .commit()
 
         val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -63,7 +69,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        lateinit var fragment: NewsFragment
+        lateinit var fragment: Fragment
         lateinit var title: String
 
         when (item.itemId) {
@@ -116,6 +122,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragment = NewsFragment.newInstance("technology", color)
                 title = "Technology"
             }
+
+            R.id.nav_favourite -> {
+                color = Color.parseColor("#9C27B0")
+                darkColor = Color.parseColor("#7B1FA2")
+                fragment = FavouriteFragment.newInstance(color)
+                title = "Favourite"
+            }
         }
 
         checkNetworkStatus()
@@ -141,7 +154,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun checkNetworkStatus() {
-        val cm: ConnectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val cm: ConnectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = cm.activeNetworkInfo
         val isConnected = networkInfo != null && networkInfo.isConnected
         if (!isConnected) {
