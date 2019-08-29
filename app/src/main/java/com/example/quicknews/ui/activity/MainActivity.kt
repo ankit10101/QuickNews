@@ -131,8 +131,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.nav_favourite -> {
-                color = Color.parseColor("#9C27B0")
-                darkColor = Color.parseColor("#7B1FA2")
+                color = Color.parseColor("#FF9800")
+                darkColor = Color.parseColor("#F57C00")
                 fragment = FavouriteFragment.newInstance(color)
                 title = "Favourite"
             }

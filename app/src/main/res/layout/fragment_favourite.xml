@@ -4,11 +4,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.NewsFragment">
+    <TextView
+            android:id="@+id/tvNoNewsAddedtoFav"
+            android:text="@string/no_news_added_to_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
             android:padding="5dp"
             android:id="@+id/rvNewsFavourite"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:visibility="invisible"/>
 
 </FrameLayout>

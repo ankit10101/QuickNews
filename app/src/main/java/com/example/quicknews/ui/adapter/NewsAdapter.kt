@@ -4,18 +4,18 @@ import android.annotation.SuppressLint
 import android.arch.persistence.room.Room
 import android.content.Context
 import android.net.Uri
+import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.quicknews.database.NewsDatabase
+import com.example.quicknews.model.News
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
-import android.support.customtabs.CustomTabsIntent
-import com.example.quicknews.model.News
-import com.example.quicknews.database.NewsDatabase
-import com.example.quicknews.R
+
 
 class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
     RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
@@ -31,7 +31,7 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsHolder {
         val inflatedView = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_news, viewGroup, false)
+            .inflate(com.example.quicknews.R.layout.item_news, viewGroup, false)
         context = viewGroup.context
         return NewsHolder(inflatedView)
     }
@@ -49,23 +49,23 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
             tvDesc.text = currentNews.description.toString()
             Picasso.get()
                 .load(currentNews.urlToImage)
-                .placeholder(R.drawable.loading)
-                .error(R.drawable.loading_failed)
+                .placeholder(com.example.quicknews.R.drawable.loading)
+                .error(com.example.quicknews.R.drawable.loading_failed)
                 .into(ivImage)
         }
         newsHolder.itemView.textViewOptions.setOnClickListener {
             val popup = PopupMenu(context, newsHolder.itemView.textViewOptions)
             //inflating menu from xml resource
-            popup.inflate(R.menu.options_menu)
+            popup.inflate(com.example.quicknews.R.menu.options_menu)
             //adding click listener
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
-                    R.id.menu1 -> {
+                    com.example.quicknews.R.id.menu1 -> {
                         val builder = CustomTabsIntent.Builder()
                         val customTabsIntent = builder.build()
                         customTabsIntent.launchUrl(context, Uri.parse(currentNews.url))
                     }
-                    R.id.menu2 -> {
+                    com.example.quicknews.R.id.menu2 -> {
                         if (newsDatabase.getNewsDao().getNews(currentNews.newsId) == null ) {
                             newsDatabase.getNewsDao().insertNews(currentNews)
                             Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)

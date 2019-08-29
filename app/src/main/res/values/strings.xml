@@ -29,5 +29,6 @@
     <string name="view_in_detail">View in Detail</string>
     <string name="add_to_favourites">Add to Favourites</string>
     <string name="remove_from_favourites">Remove from Favourites</string>
+    <string name="no_news_added_to_favourite">No news added to favourite</string>
 
 </resources>
