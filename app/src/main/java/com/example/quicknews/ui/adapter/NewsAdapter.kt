@@ -1,19 +1,21 @@
-package com.example.quicknews
+package com.example.quicknews.ui.adapter
 
 import android.annotation.SuppressLint
 import android.arch.persistence.room.Room
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
-import android.support.v4.content.ContextCompat
+import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_favourite.view.*
 import kotlinx.android.synthetic.main.item_news.view.*
+import android.support.customtabs.CustomTabsIntent
+import com.example.quicknews.model.News
+import com.example.quicknews.database.NewsDatabase
+import com.example.quicknews.R
 
 class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
     RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
@@ -50,38 +52,35 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.loading_failed)
                 .into(ivImage)
-
-            myToggleButton.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    myToggleButton.setBackgroundDrawable(
-                        ContextCompat.getDrawable(
-                            context,
-                            R.drawable.star_yellow
-                        )
-                    )
-                    Log.e("TAG", currentNews.title.toString())
-                    newsDatabase.getNewsDao().insertNews(currentNews)
-                    notifyDataSetChanged()
-                } else {
-                    myToggleButton.setBackgroundDrawable(
-                        ContextCompat.getDrawable(
-                            context,
-                            R.drawable.star_grey
-                        )
-                    )
-                    Log.e("TAG", currentNews.title.toString())
-                    newsDatabase.getNewsDao().deleteNews(currentNews)
-                    notifyDataSetChanged()
-                }
-            }
         }
-        newsHolder.itemView.setOnClickListener {
-            val i = Intent()
-            i.action = Intent.ACTION_VIEW
-            i.data = Uri.parse(currentNews.url)
-            newsHolder.itemView.context.startActivity(i)
+        newsHolder.itemView.textViewOptions.setOnClickListener {
+            val popup = PopupMenu(context, newsHolder.itemView.textViewOptions)
+            //inflating menu from xml resource
+            popup.inflate(R.menu.options_menu)
+            //adding click listener
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.menu1 -> {
+                        val builder = CustomTabsIntent.Builder()
+                        val customTabsIntent = builder.build()
+                        customTabsIntent.launchUrl(context, Uri.parse(currentNews.url))
+                    }
+                    R.id.menu2 -> {
+                        if (newsDatabase.getNewsDao().getNews(currentNews.newsId) == null ) {
+                            newsDatabase.getNewsDao().insertNews(currentNews)
+                            Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            Toast.makeText(context, " Already Added", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
+                false
+            }
+            //displaying the popup
+            popup.show()
         }
     }
-
     class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

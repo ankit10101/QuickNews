@@ -1,6 +1,5 @@
-package com.example.quicknews
+package com.example.quicknews.ui.fragment
 
-import android.arch.persistence.room.Room
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.quicknews.model.News
+import com.example.quicknews.ui.adapter.NewsAdapter
+import com.example.quicknews.model.NewsResponse
+import com.example.quicknews.R
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_news.*
 import okhttp3.*
@@ -69,7 +72,8 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rvNews.visibility = View.GONE
-        newsAdapter = NewsAdapter(questionsList, arguments!!.getInt("COLOR"))
+        newsAdapter =
+            NewsAdapter(questionsList, arguments!!.getInt("COLOR"))
         rvNews.layoutManager = LinearLayoutManager(requireContext())
         rvNews.adapter = newsAdapter
         fetchQuestions()

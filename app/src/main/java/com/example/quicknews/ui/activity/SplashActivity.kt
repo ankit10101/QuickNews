@@ -1,9 +1,10 @@
-package com.example.quicknews
+package com.example.quicknews.ui.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.quicknews.R
 
 class SplashActivity : AppCompatActivity() {
     private val SPLASH_TIME_OUT = 2000

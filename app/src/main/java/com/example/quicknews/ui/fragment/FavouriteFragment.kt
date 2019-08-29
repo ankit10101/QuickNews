@@ -1,4 +1,4 @@
-package com.example.quicknews
+package com.example.quicknews.ui.fragment
 
 import android.arch.persistence.room.Room
 import android.os.Bundle
@@ -7,12 +7,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.quicknews.model.News
+import com.example.quicknews.database.NewsDatabase
+import com.example.quicknews.ui.adapter.NewsFavouriteAdapter
+import com.example.quicknews.R
 import kotlinx.android.synthetic.main.fragment_favourite.*
 
 class FavouriteFragment : Fragment() {
 
-    private lateinit var newsAdapter: NewsAdapter
-    private var list: List<News> = ArrayList<News>()
+    private lateinit var newsFavouriteAdapter: NewsFavouriteAdapter
+    private var list: ArrayList<News> = ArrayList()
 
     private val newsDatabase by lazy {
         Room.databaseBuilder(requireContext(), NewsDatabase::class.java, "news.db")
@@ -42,9 +46,10 @@ class FavouriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list = newsDatabase.getNewsDao().getAllNews()
-        newsAdapter = NewsAdapter(list, arguments!!.getInt("COLOR"))
+        list = newsDatabase.getNewsDao().getAllNews() as ArrayList<News>
+        newsFavouriteAdapter =
+            NewsFavouriteAdapter(list, arguments!!.getInt("COLOR"))
         rvNewsFavourite.layoutManager = LinearLayoutManager(requireContext())
-        rvNewsFavourite.adapter = newsAdapter
+        rvNewsFavourite.adapter = newsFavouriteAdapter
     }
 }

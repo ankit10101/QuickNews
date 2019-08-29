@@ -1,4 +1,4 @@
-package com.example.quicknews
+package com.example.quicknews.ui.activity
 
 import android.content.Context
 import android.graphics.Color
@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -16,6 +15,9 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import com.example.quicknews.ui.fragment.NewsFragment
+import com.example.quicknews.R
+import com.example.quicknews.ui.fragment.FavouriteFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -77,21 +79,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_general -> {
                 color = Color.parseColor("#FF9800")
                 darkColor = Color.parseColor("#F57C00")
-                fragment = NewsFragment.newInstance("general", color)
+                fragment =
+                    NewsFragment.newInstance("general", color)
                 title = "Quick News"
             }
 
             R.id.nav_business -> {
                 color = Color.parseColor("#FFEB3B")
                 darkColor = Color.parseColor("#FBC02D")
-                fragment = NewsFragment.newInstance("business", color)
+                fragment =
+                    NewsFragment.newInstance("business", color)
                 title = "Business"
             }
 
             R.id.nav_entertainment -> {
                 color = Color.parseColor("#03A9F4")
                 darkColor = Color.parseColor("#0288D1")
-                fragment = NewsFragment.newInstance("entertainment", color)
+                fragment =
+                    NewsFragment.newInstance("entertainment", color)
                 title = "Entertainment"
             }
 
@@ -105,7 +110,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_science -> {
                 color = Color.parseColor("#8BC34A")
                 darkColor = Color.parseColor("#689F38")
-                fragment = NewsFragment.newInstance("science", color)
+                fragment =
+                    NewsFragment.newInstance("science", color)
                 title = "Science"
             }
 
@@ -119,7 +125,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_technology -> {
                 color = Color.parseColor("#9C27B0")
                 darkColor = Color.parseColor("#7B1FA2")
-                fragment = NewsFragment.newInstance("technology", color)
+                fragment =
+                    NewsFragment.newInstance("technology", color)
                 title = "Technology"
             }
 

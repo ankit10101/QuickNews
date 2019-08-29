@@ -43,28 +43,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-            <TextView
-                    android:id="@+id/tvPublishedAt"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|right"
-                    tools:ignore="RtlHardcoded" />
+                    android:orientation="horizontal">
 
-<!--            <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:background="#000" />-->
+                <TextView
+                        android:id="@+id/tvPublishedAt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|right"
+                        android:layout_weight="4"
+                        tools:ignore="RtlHardcoded" />
 
-            <ToggleButton
-                    android:id="@+id/myToggleButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:padding="5dp"
-                    android:textOff=""
-                    android:checked="false"
-                    android:background="@drawable/star_grey"
-                    android:textOn="" />
+                <TextView
+                        android:id="@+id/textViewOptions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="end"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:text="&#8942;"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        tools:ignore="RtlSymmetry" />
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>

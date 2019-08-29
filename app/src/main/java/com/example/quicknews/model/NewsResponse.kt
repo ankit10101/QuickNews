@@ -1,4 +1,4 @@
-package com.example.quicknews
+package com.example.quicknews.model
 
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
@@ -8,8 +8,7 @@ class NewsResponse(var articles: ArrayList<News>)
 
 @Entity
 class News(
-    @PrimaryKey(autoGenerate = true)
-    val newsId: Int,
+    @PrimaryKey val newsId: Int,
     @Embedded var source: Source?,
     var author: String?,
     var title: String?,
@@ -18,8 +17,7 @@ class News(
     var urlToImage: String?,
     var publishedAt: String?,
     var content: String?,
-    var type: String?,
-    var checked: Boolean
+    var type: String?
 )
 
 class Source(
