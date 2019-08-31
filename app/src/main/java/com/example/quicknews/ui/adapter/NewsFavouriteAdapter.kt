@@ -43,7 +43,7 @@ class NewsFavouriteAdapter(private var newsItems: ArrayList<News>, private val c
         with(newsFavouriteHolder.itemView) {
             card_view.setCardBackgroundColor(color)
             tvSource.text = currentNews.source!!.name.toString()
-            tvTitle.text = currentNews.title.toString()
+            tvTitle.text = currentNews.title
             tvPublishedAt.text = "Published at: " + currentNews.publishedAt.toString()
             tvDesc.text = currentNews.description.toString()
             com.squareup.picasso.Picasso.get()

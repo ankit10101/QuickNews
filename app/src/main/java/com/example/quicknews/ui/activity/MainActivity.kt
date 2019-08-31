@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         checkNetworkStatus()
 
-        val fragment = NewsFragment.newInstance("general", color)
+        val fragment = NewsFragment.newInstance("General", color)
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment)
             .commit()
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#FF9800")
                 darkColor = Color.parseColor("#F57C00")
                 fragment =
-                    NewsFragment.newInstance("general", color)
+                    NewsFragment.newInstance("General", color)
                 title = "Quick News"
             }
 
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#FFEB3B")
                 darkColor = Color.parseColor("#FBC02D")
                 fragment =
-                    NewsFragment.newInstance("business", color)
+                    NewsFragment.newInstance("Business", color)
                 title = "Business"
             }
 
@@ -96,14 +96,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#03A9F4")
                 darkColor = Color.parseColor("#0288D1")
                 fragment =
-                    NewsFragment.newInstance("entertainment", color)
+                    NewsFragment.newInstance("Entertainment", color)
                 title = "Entertainment"
             }
 
             R.id.nav_health -> {
                 color = Color.parseColor("#FF4081")
                 darkColor = Color.parseColor("#E91E63")
-                fragment = NewsFragment.newInstance("health", color)
+                fragment = NewsFragment.newInstance("Health", color)
                 title = "Health"
             }
 
@@ -111,14 +111,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#8BC34A")
                 darkColor = Color.parseColor("#689F38")
                 fragment =
-                    NewsFragment.newInstance("science", color)
+                    NewsFragment.newInstance("Science", color)
                 title = "Science"
             }
 
             R.id.nav_sports -> {
                 color = Color.parseColor("#4CAF50")
                 darkColor = Color.parseColor("#388E3C")
-                fragment = NewsFragment.newInstance("sports", color)
+                fragment = NewsFragment.newInstance("Sports", color)
                 title = "Sports"
             }
 
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 color = Color.parseColor("#9C27B0")
                 darkColor = Color.parseColor("#7B1FA2")
                 fragment =
-                    NewsFragment.newInstance("technology", color)
+                    NewsFragment.newInstance("Technology", color)
                 title = "Technology"
             }
 

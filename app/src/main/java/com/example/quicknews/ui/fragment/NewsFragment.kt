@@ -73,7 +73,7 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvNews.visibility = View.GONE
         newsAdapter =
-            NewsAdapter(questionsList, arguments!!.getInt("COLOR"))
+            NewsAdapter(questionsList, arguments!!.getInt("COLOR"), arguments!!.getString("CATEGORY") )
         rvNews.layoutManager = LinearLayoutManager(requireContext())
         rvNews.adapter = newsAdapter
         fetchQuestions()

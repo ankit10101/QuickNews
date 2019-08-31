@@ -30,5 +30,7 @@
     <string name="add_to_favourites">Add to Favourites</string>
     <string name="remove_from_favourites">Remove from Favourites</string>
     <string name="no_news_added_to_favourite">No news added to favourite</string>
+    <string name="see_news_of_category">See News of category:</string>
+    <string name="select_category">Select Category</string>
 
 </resources>

@@ -19,7 +19,7 @@ import com.example.quicknews.ui.activity.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
 
-class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
+class NewsAdapter(private var newsItems: List<News>, private val color: Int, private  val category: String?) :
     RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
     private lateinit var context: Context
@@ -43,6 +43,7 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(newsHolder: NewsHolder, position: Int) {
         val currentNews = newsItems[position]
+        currentNews.type = category
         with(newsHolder.itemView) {
             card_view.setCardBackgroundColor(color)
             tvSource.text = currentNews.source!!.name.toString()
@@ -68,6 +69,7 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
                         customTabsIntent.launchUrl(context, Uri.parse(currentNews.url))
                     }
                     R.id.menu2 -> {
+                        Log.e("TAG",currentNews.type.toString())
                         newsDatabase.getNewsDao().insertNews(currentNews)
                         Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)
                             .show()
