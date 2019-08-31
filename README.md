@@ -6,6 +6,7 @@ Features
 --------
 - fetches latest news. 
 - allows user to save articles to read later
+- share important news with friends and family
 
 #### Screenshots
 --------
@@ -17,7 +18,7 @@ Features
      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059505-abac8f80-cbdb-11e9-9068-f92181fbac95.png" width="200" height="350" title="Science News"> </kbd></td>
      <tr> 
       <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059517-d565b680-cbdb-11e9-9e5e-b7e58b53210e.png" width="200" height="350" title="Technology News"> </kbd></td>
-      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059523-f62e0c00-cbdb-11e9-8f18-4183466e4c6b.png" width="200" height="350" title="Add to Favourites"> </kbd></td>
+      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64060631-45306d00-cbed-11e9-9c4a-0cf824d155e4.png" width="200" height="350" title="Add to Favourites"> </kbd></td>
       <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059528-1231ad80-cbdc-11e9-84ce-eae7f7f1b3be.png" width="200" height="350" title="Favourites"> </kbd></td>
     </tr>
   </table>
