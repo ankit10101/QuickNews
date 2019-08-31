@@ -3,6 +3,7 @@ package com.example.quicknews.ui.adapter
 import android.annotation.SuppressLint
 import android.arch.persistence.room.Room
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.quicknews.R
 import com.example.quicknews.database.NewsDatabase
 import com.example.quicknews.model.News
 import kotlinx.android.synthetic.main.item_news.view.*
@@ -28,7 +30,7 @@ class NewsFavouriteAdapter(private var newsItems: ArrayList<News>, private val c
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsFavouriteHolder {
         val inflatedView = LayoutInflater.from(viewGroup.context)
-            .inflate(com.example.quicknews.R.layout.item_news, viewGroup, false)
+            .inflate(R.layout.item_news, viewGroup, false)
         context = viewGroup.context
         return NewsFavouriteHolder(
             inflatedView
@@ -55,7 +57,7 @@ class NewsFavouriteAdapter(private var newsItems: ArrayList<News>, private val c
         newsFavouriteHolder.itemView.textViewOptions.setOnClickListener {
             val popup = PopupMenu(context, newsFavouriteHolder.itemView.textViewOptions)
             //inflating menu from xml resource
-            popup.inflate(com.example.quicknews.R.menu.options_menu_favourite)
+            popup.inflate(R.menu.options_menu_favourite)
 
             //adding click listener
             popup.setOnMenuItemClickListener { item ->
@@ -65,11 +67,26 @@ class NewsFavouriteAdapter(private var newsItems: ArrayList<News>, private val c
                         val customTabsIntent = builder.build()
                         customTabsIntent.launchUrl(context, Uri.parse(currentNews.url))
                     }
-                    com.example.quicknews.R.id.menu2 -> {
+                    R.id.menu2 -> {
                         newsDatabase.getNewsDao().deleteNews(currentNews)
                         newsItems.remove(currentNews)
                         notifyDataSetChanged()
 
+                    }
+                    R.id.share -> {
+                        val sendIntent = Intent()
+                        sendIntent.action = Intent.ACTION_SEND
+                        sendIntent.putExtra(
+                            Intent.EXTRA_TEXT,
+                            "Check this from my favourite QuickNews app. " + currentNews.url
+                        )
+                        sendIntent.type = "text/plain"
+                        context.startActivity(
+                            Intent.createChooser(
+                                sendIntent,
+                                "Share with friends via"
+                            )
+                        )
                     }
                 }
                 false

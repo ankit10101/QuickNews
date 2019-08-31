@@ -3,6 +3,7 @@ package com.example.quicknews.ui.adapter
 import android.annotation.SuppressLint
 import android.arch.persistence.room.Room
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
@@ -18,6 +19,7 @@ import com.example.quicknews.model.News
 import com.example.quicknews.ui.activity.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
+import java.security.AccessController.getContext
 
 class NewsAdapter(private var newsItems: List<News>, private val color: Int, private  val category: String?) :
     RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
@@ -73,6 +75,22 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int, pri
                         newsDatabase.getNewsDao().insertNews(currentNews)
                         Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)
                             .show()
+                    }
+                    R.id.share -> {
+                        val sendIntent = Intent()
+                        sendIntent.action = Intent.ACTION_SEND
+                        sendIntent.putExtra(
+                            Intent.EXTRA_TEXT,
+                            "Check this from my favourite News Source. " + currentNews.url + " Download the app at urlzs.com/hBnvY"
+                        )
+                        sendIntent.type = "text/plain"
+                        //sendIntent.setPackage("com.whatsapp"); //to share only on whatspp
+                        context.startActivity(
+                            Intent.createChooser(
+                                sendIntent,
+                                "Share with friends via"
+                            )
+                        )
                     }
                 }
                 false

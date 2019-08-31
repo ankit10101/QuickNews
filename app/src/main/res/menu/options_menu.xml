@@ -5,6 +5,9 @@
             android:id="@+id/menu1"
             android:title="@string/view_in_detail" />
     <item
+            android:id="@+id/share"
+            android:title="@string/share" />
+    <item
             android:id="@+id/menu2"
             android:title="@string/add_to_favourites" />
 

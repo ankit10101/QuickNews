@@ -32,5 +32,6 @@
     <string name="no_news_added_to_favourite">No news added to favourite</string>
     <string name="see_news_of_category">See News of category:</string>
     <string name="select_category">Select Category</string>
+    <string name="share">Share</string>
 
 </resources>
