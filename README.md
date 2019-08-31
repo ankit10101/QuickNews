@@ -1,15 +1,14 @@
 # QuickNews
---------
 Daily use news app made using the News API(https://newsapi.org)
 
-Features
---------
+### Features
+
 - fetches latest news. 
 - allows user to save articles to read later
 - share important news with friends and family
 
-#### Screenshots
---------
+### Screenshots
+
 <table>
     <tr>
      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059395-730bb680-cbd9-11e9-8e4b-364ba7b3dc29.png" width="200" height="350" title="Splash Screen""></kbd></td>
