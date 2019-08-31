@@ -22,3 +22,6 @@ Features
       <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059528-1231ad80-cbdc-11e9-84ce-eae7f7f1b3be.png" width="200" height="350" title="Favourites"> </kbd></td>
     </tr>
   </table>
+         
+## Download
+You can download the apk here [QuickNews](https://www.dropbox.com/s/f9hj8vfu8ykgznm/QuickNews.apk?dl=0)
