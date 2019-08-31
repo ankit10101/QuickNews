@@ -8,10 +8,9 @@ class NewsResponse(var articles: ArrayList<News>)
 
 @Entity
 class News(
-    @PrimaryKey val newsId: Int,
+    @PrimaryKey var title: String,
     @Embedded var source: Source?,
     var author: String?,
-    var title: String?,
     var description: String?,
     var url: String?,
     var urlToImage: String?,

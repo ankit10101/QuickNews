@@ -69,6 +69,7 @@ class NewsFavouriteAdapter(private var newsItems: ArrayList<News>, private val c
                         newsDatabase.getNewsDao().deleteNews(currentNews)
                         newsItems.remove(currentNews)
                         notifyDataSetChanged()
+
                     }
                 }
                 false

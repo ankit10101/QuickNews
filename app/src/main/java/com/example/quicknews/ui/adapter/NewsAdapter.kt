@@ -7,15 +7,17 @@ import android.net.Uri
 import android.support.customtabs.CustomTabsIntent
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.quicknews.R
 import com.example.quicknews.database.NewsDatabase
 import com.example.quicknews.model.News
+import com.example.quicknews.ui.activity.MainActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_news.view.*
-
 
 class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
     RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
@@ -31,7 +33,7 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NewsHolder {
         val inflatedView = LayoutInflater.from(viewGroup.context)
-            .inflate(com.example.quicknews.R.layout.item_news, viewGroup, false)
+            .inflate(R.layout.item_news, viewGroup, false)
         context = viewGroup.context
         return NewsHolder(inflatedView)
     }
@@ -49,8 +51,8 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
             tvDesc.text = currentNews.description.toString()
             Picasso.get()
                 .load(currentNews.urlToImage)
-                .placeholder(com.example.quicknews.R.drawable.loading)
-                .error(com.example.quicknews.R.drawable.loading_failed)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.loading_failed)
                 .into(ivImage)
         }
         newsHolder.itemView.textViewOptions.setOnClickListener {
@@ -60,20 +62,15 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
             //adding click listener
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
-                    com.example.quicknews.R.id.menu1 -> {
+                    R.id.menu1 -> {
                         val builder = CustomTabsIntent.Builder()
                         val customTabsIntent = builder.build()
                         customTabsIntent.launchUrl(context, Uri.parse(currentNews.url))
                     }
-                    com.example.quicknews.R.id.menu2 -> {
-                        if (newsDatabase.getNewsDao().getNews(currentNews.newsId) == null ) {
-                            newsDatabase.getNewsDao().insertNews(currentNews)
-                            Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)
-                                .show()
-                        } else {
-                            Toast.makeText(context, " Already Added", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    R.id.menu2 -> {
+                        newsDatabase.getNewsDao().insertNews(currentNews)
+                        Toast.makeText(context, "Added to Favourites", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 false
@@ -82,5 +79,6 @@ class NewsAdapter(private var newsItems: List<News>, private val color: Int) :
             popup.show()
         }
     }
+
     class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

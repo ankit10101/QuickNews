@@ -47,7 +47,7 @@ class FavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list = newsDatabase.getNewsDao().getAllNews() as ArrayList<News>
-        if(list.isNotEmpty()){
+        if (list.isNotEmpty()) {
             tvNoNewsAddedtoFav.visibility = View.INVISIBLE
             rvNewsFavourite.visibility = View.VISIBLE
         }
