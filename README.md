@@ -11,7 +11,7 @@ Daily use news app made using the News API(https://newsapi.org)
 
 <table>
     <tr>
-     <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059395-730bb680-cbd9-11e9-8e4b-364ba7b3dc29.png" width="200" height="350" title="Splash Screen""></kbd></td>
+     <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64077117-a0945500-ccea-11e9-867f-5d7719323c45.png" width="200" height="350" title="Splash Screen""></kbd></td>
      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059456-aa2e9780-cbda-11e9-93bd-c60a32601176.png" width="200" height="350" title="Home page"></kbd></td>
      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059500-828bff00-cbdb-11e9-9894-4a74151a19b9.png" width="200" height="350" title="Navigation Drawer"> </kbd></td>
      <td><kbd><img src="https://user-images.githubusercontent.com/40112826/64059505-abac8f80-cbdb-11e9-9068-f92181fbac95.png" width="200" height="350" title="Science News"> </kbd></td>
@@ -23,4 +23,4 @@ Daily use news app made using the News API(https://newsapi.org)
   </table>
          
 ## Download
-You can download the apk here [QuickNews](https://www.dropbox.com/s/f9hj8vfu8ykgznm/QuickNews.apk?dl=0)
+You can download the apk here [QuickNews](https://www.dropbox.com/s/tfszilms758ygbs/QuickNews.apk?dl=0)
